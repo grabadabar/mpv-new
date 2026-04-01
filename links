@@ -1,0 +1,27 @@
+https://github.com/cpg314/mpv-web-remote
+https://github.com/cpg314/mpv-web-remote/releases
+https://github.com/FIX94/mpv-browser-remote/tree/master
+https://github.com/grabadabar/mpv-new/new/main
+
+mpv --input-ipc-server=/tmp/mpvsocket
+
+#####pause/play
+
+echo '{ "command": ["cycle", "pause"] }' | socat - /tmp/mpvsocket
+
+echo '{ "command": ["loadfile", "https://192.168.122.161/home/joro/Videos/second.mp4"] }' | socat - /tmp/mpv-socket
+
+
+export DISPLAY=:0
+export XAUTHORITY=/home/user/.Xauthority
+
+xhost +local:
+
+
+mpv file.mp4
+
+
+https://github.com/cpg314/mpv-web-remote/releases/download/v0.1.1/mpv-web-remote_0.1.1-1_amd64.deb
+
+
+
