@@ -1,0 +1,21 @@
+#play all mp3s in current directory (without video display)
+mpv --no-vid --input-ipc-server=/tmp/mpvsocket *.mp3
+ 
+#now mpv commands can be sent to /tmp/mpvsocket with socat
+echo cycle pause | socat - /tmp/mpvsocket
+echo playlist_prev | socat - /tmp/mpvsocket                                                                                                   
+echo playlist_next | socat - /tmp/mpvsocket
+ 
+#Jump forward of back 5 seconds
+echo seek  5| socat - /tmp/mpvsocket
+echo seek  -5| socat - /tmp/mpvsocket
+ 
+#You can also send key presses
+#Example for Volume Control
+echo '{ "command": [ "keypress", "0" ] }' | socat - /tmp/mpvsocket
+echo '{ "command": [ "keypress", "9" ] }' | socat - /tmp/mpvsocket
+ 
+#if you have youtube-dl install you can stream playlists
+mpv --no-vid --input-ipc-server=/tmp/mpvsocket "https://www.youtube.com/playlist?list=PLG1znKjmrCrZfQAWkBjQsFw-gLuHzTNa4"
+ 
+#note, kill previous mpv before starting a new process.  
